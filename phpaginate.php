@@ -60,18 +60,18 @@ function paginationBeforeAndAfter($before,$after,$initialBounds,$currentPage,$nu
 
 
     for($i=0; $i<$initialBounds; $i++) {
-        if(($currentPage-$before) > 1 && $linksRemaining >0) {
-            $before++;
+        if(($currentPage+$after) <= $num_pages && $linksRemaining > 0) {
+            $after++;
             $linksRemaining--;
+            $error--;
         }
         else
             $error++;
     }
     for($i=0; $i<$initialBounds; $i++) {
-        if(($currentPage+$after) <= $num_pages && $linksRemaining > 0) {
-            $after++;
+        if(($currentPage-$before) > 1 && $linksRemaining >0) {
+            $before++;
             $linksRemaining--;
-            $error--;
         }
         else
             $error++;
