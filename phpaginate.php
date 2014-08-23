@@ -52,7 +52,7 @@ function get_pagination_numbers($currentPage,$num_pages) {
  * @return array 
  */
 function paginationBeforeAndAfter($before,$after,$initialBounds,$currentPage,$num_pages,$linksRemaining) {
-    $failCount = 0; //When this hits 2 we'll break
+    $error = 0; //When this hits 2 we'll break
     if($num_pages == 0)
         $num_pages =1;
     if($num_pages < $linksRemaining)
@@ -64,8 +64,8 @@ function paginationBeforeAndAfter($before,$after,$initialBounds,$currentPage,$nu
             $before++;
             $linksRemaining--;
         }
-        else 
-            $fail++;
+        else
+            $error++;
     }
     for($i=0; $i<$initialBounds; $i++) {
         if(($currentPage+$after) <= $num_pages && $linksRemaining > 0) {
